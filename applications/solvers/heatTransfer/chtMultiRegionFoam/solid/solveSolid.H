@@ -11,8 +11,8 @@ if (finalIter)
             fvm::ddt(betav*rho, h)
           - (
                thermo.isotropic()
-             ? fvm::laplacian(betav*thermo.alpha(), h, "laplacian(alpha,h)")
-             : fvm::laplacian(betav*taniAlpha(), h, "laplacian(alpha,h)")
+             ? fvm::laplacian(betav*thermo.alpha(), h, "laplacian(alpha,h)") //各向同性的
+             : fvm::laplacian(betav*taniAlpha(), h, "laplacian(alpha,h)")    //各向异性的
             )
           ==
             fvOptions(rho, h)
